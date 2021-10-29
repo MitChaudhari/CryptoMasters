@@ -28,38 +28,95 @@
   	 */
 		var quiz = [
 			{
-				"question"		: 	"Q1: Who came up with theory of relativity?",
+				"question"		: 	"Q1: As of September 2021, an estimated 6,000 to 10,000 cryptocurrencies are in the market with a capitalization of nearly $2 trillion.",
 				"choices"		: 	[
-										"Sir Isaac Newton",
-										"Nicolaus Copernicus",
-										"Albert Einstein",
-										"Ralph Waldo Emmerson"
+										"True",
+										"False",
 									],
-				"correct"		: 	"Albert Einstein",
-				"explanation"	: 	"Albert Einstein drafted the special theory of relativity in 1905.",
+				"correct"		: 	"True",
+				"explanation"	: 	"It is true, As of September 2021, estimates of the different types of cryptocurrency you can trade range from nearly 6,000 coins to over 10,000, with a total market capitalization of nearly $2 trillion.",
 				
 			},
 			{
-				"question"		: 	"Q2: Who is on the two dollar bill?",
+				"question"		: 	"Q2: Select one that best defines two types of Crypto",
 				"choices"		: 	[
-										"Thomas Jefferson",
-										"Dwight D. Eisenhower",
-										"Benjamin Franklin",
-										"Abraham Lincoln"
+										"Coins are built on their own blockchain, and Tokens are also built on an existing blockchain.",
+										"Tokens are built on their own blockchain, and Coins are also built on an existing blockchain.",
 									],
-				"correct"		: 	"Thomas Jefferson",
-				"explanation"	: 	"The two dollar bill is seldom seen in circulation. As a result, some businesses are confused when presented with the note.",
+				"correct"		: 	"Coins are built on their own blockchain, and Tokens are also built on an existing blockchain.",
+				"explanation"	: 	"Coins are built on their own blockchain and they’re intended as a form of currency.",
 			},
 			{
-				"question"		: 	"Q3: What event began on April 12, 1861?",
+				"question"		: 	"Q3: Is it true a token differs from a coin in the way it’s constructed within the blockchain of an existing coin like Bitcoin or Ethereum?",
 				"choices"		: 	[
-										"First manned flight",
-										"California became a state",
-										"American Civil War began",
-										"Declaration of Independence"
+										"True",
+										"False",
 									],
-				"correct"		: 	"American Civil War began",
-				"explanation"	: 	"South Carolina came under attack when Confederate soldiers attacked Fort Sumter. The war lasted until April 9th 1865.",
+				"correct"		: 	"True",
+				"explanation"	: 	"Utility tokens are designated for specific users",
+			},
+            {
+				"question"		: 	"Q4: Is it true the most common types of Cryptocurrency include Bitcoin, Ethereum, Cardano, Binance Coin, Dogecoin, and USD Coin?",
+				"choices"		: 	[
+										"True",
+										"False",
+									],
+				"correct"		: 	"True",
+				"explanation"	: 	"Few common types of Cryptocurrencies are Bitcoin, Ethereum, Cardano, Binace Coin, Tether, XRP, Dogecoin, Polkadot, and USD",
+				
+			},
+            {
+				"question"		: 	"Q5: How to avoid Cryptocurrency Scams?",
+				"choices"		: 	[   
+                                         "All the above",
+										"Research your Crypto",
+										"Use reputable platforms and exchanges",
+                                        "Review the URLs carefully",
+										"Beware celebrity endorsements",
+                                        "Don't give your passwords or cryptocurrency keys to anyone",
+										
+									],
+				"correct"		: 	"All the above",
+				"explanation"	: 	"All the above are good examples of avoiding scams in Cryptocurrency",
+				
+			},
+            {
+				"question"		: 	"Q6: What is an example of a claim that a scammer might use",
+				"choices"		: 	[
+                                         "All the above",
+                                        "Guarantee that you’ll make money",
+										"Promise big payouts with guaranteed returns",
+                                        "Promise free money",
+										"Big claims without details",
+										
+									],
+				"correct"		: "All the above",
+				"explanation"	: 	"Look for claims like above to spot a scam",
+				
+			},
+            {
+				"question"		: 	"Q7: Is it true an example of an Investment and business opportunity scam promise that you can earn lots of money in a short time and achieve financial freedom?",
+				"choices"		: 	[
+										"True",
+										"False",
+									],
+				"correct"		: 	"True",
+				"explanation"	: 	"Investment and business opportunity scam will involve with huge money in short time",
+				
+			},
+            {
+				"question"		: 	"Q8: What is an example of an action to take if you’ve been scammed in cryptocurrency?",
+				"choices"		: 	[
+                                        "All the above",
+                                        "Call your bank or cryptocurrency exchange",
+										"Protect your identity",
+                                        "Contact a cyber investigator",
+										"Report it to the FTC",
+										
+									],
+				"correct"		: "All the above",
+				"explanation"	: 	"All the above are some steps to take if you have been scammed in cryptocurrency",
+				
 			},
 	
 		];
@@ -176,7 +233,13 @@
 			
 			document.getElementById('content').innerHTML = '<h2>You Completed The Quiz</h2>';
 			document.getElementById('content').innerHTML += '<p>Below are your results:</p>';
-			document.getElementById('content').innerHTML += '<h2>' + score + ' out of ' + quiz.length + ' questions, ' + Math.round(score/quiz.length * 100) + '%</h2>';
+            if(score<50){
+                document.getElementById('content').innerHTML += '<h2>' + score + ' out of ' + quiz.length + ' questions, ' + Math.round(score/quiz.length * 100) + '%</h2>' + 'Please revisit the lessons to improve the score!';
+            }
+            else{
+                document.getElementById('content').innerHTML += '<h2>' + score + ' out of ' + quiz.length + ' questions, ' + Math.round(score/quiz.length * 100) + '%</h2>';
+            }
+			
 			
 			//delete the button
 			var button = document.getElementById('check');
