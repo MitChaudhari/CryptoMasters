@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Quiz</title>
+	<style>
+		/*css reset */
+		html,body,div,span,h1,h2,h3,h4,h5,h6,p,code,small,strike,strong,sub,sup,b,u,i{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0;} 
+		article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;} 
+		body{line-height:1; font:normal 0.9em/1em "Helvetica Neue", Helvetica, Arial, sans-serif;} 
+		ol,ul{list-style:none;} 
+		#frame{max-width:620px;width:100%;border:1px solid #ccc;background:#eee;padding:10px;} 
+		#content{font:normal normal 1em/1.5em "Helvetica Neue", Helvetica, Arial, sans-serif;margin:0 40px 10px;} 
+		h1{font:normal bold 2em/1.8em "Helvetica Neue", Helvetica, Arial, sans-serif;text-align:left;background:#ccc;padding:0 15px;width:auto}
+		h2{font:italic bold 1.3em/1.2em "Helvetica Neue", Helvetica, Arial, sans-serif;padding:5px 15px 15px;} 
+		input[type=radio]{margin:0 10px 5px -22px;} label{margin:0 0 5px;}
+		#score p{font-size:0.95em; font-style:italic; color:#666; float:right;margin:5px 5px 0 0;}
+		#score:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;}
+		#response{min-height:70px; margin:10px; }
+		#response h3{font:normal bold 1.2em/1.5em "Helvetica Neue", Helvetica, Arial, sans-serif; margin:5px 0;}
+	</style>
+	<script>
+	
+	  /**
+  	 * Set the information about your questions here. The correct answer string needs to match
+  	 * the correct choice exactly, as it does string matching. (case sensitive)
+  	 *
+  	 */
+		var quiz = [
+            {
+				"question"		: 	"Q9: What is an example of an action to take if you’ve been scammed in cryptocurrency?",
+				"choices"		: 	[
+										"All the above",
+                                        "Call your bank or cryptocurrency exchange",
+										"Protect your identity",
+                                        "Contact a cyber investigator",
+										"Report it to the FTC",
+										
+									],
+				"correct"		: [
+										"All the above",
+                					    "Call your bank or cryptocurrency exchange",
+										"Protect your identity",
+             					       "Contact a cyber investigator",
+										"Report it to the FTC",
+									],
+				"explanation"	: 	"All the above are some steps to take if you have been scammed in cryptocurrency",
+				
+				"type" : "checkbox"
+				
+			},
+            {
+				"question"		: 	"Q9: What is an example of an action to take if you’ve been scammed in cryptocurrency?",
+				"choices"		: 	[
+										"All the above",
+                                        "Call your bank or cryptocurrency exchange",
+										"Protect your identity",
+                                        "Contact a cyber investigator",
+										"Report it to the FTC",
+										
+									],
+				"correct"		: [
+									"All the above","Protect your identity",
+									],
+				"explanation"	: 	"All the above are some steps to take if you have been scammed in cryptocurrency",
+				
+				"type" : "checkbox"
+				
+			},
+            {
+				"question"		: 	"Q9: What is an example of an action to take if you’ve been scammed in cryptocurrency?",
+				"choices"		: 	[
+										"All the above",
+                                        "Call your bank or cryptocurrency exchange",
+										"Protect your identity",
+                                        "Contact a cyber investigator",
+										"Report it to the FTC",
+										
+									],
+				"correct"		: [
+									"All the above","Report it to the FTC",
+									],
+				"explanation"	: 	"All the above are some steps to take if you have been scammed in cryptocurrency",
+				
+				"type" : "checkbox"
+				
+			},
+			{
+				"question"		: 	"Q1: As of September 2021, an estimated 6,000 to 10,000 cryptocurrencies are in the market with a capitalization of nearly $2 trillion.",
+				"choices"		: 	[
+										"True",
+										"False",
+									],
+				"correct"		: 	["True","False",],
+				"explanation"	: 	"It is true, As of September 2021, estimates of the different types of cryptocurrency you can trade range from nearly 6,000 coins to over 10,000, with a total market capitalization of nearly $2 trillion.",
+				
+				"type" : "checkbox"
+			},
+			{
+				"question"		: 	"Q1: As of September 2021, an estimated 6,000 to 10,000 cryptocurrencies are in the market with a capitalization of nearly $2 trillion.",
+				"choices"		: 	[
+										"True",
+										"False",
+									],
+				"correct"		: 	"True",
+				"explanation"	: 	"It is true, As of September 2021, estimates of the different types of cryptocurrency you can trade range from nearly 6,000 coins to over 10,000, with a total market capitalization of nearly $2 trillion.",
+				
+				"type" : "radio"
+			},
+			{
+				"question"		: 	"Q2: Select one that best defines two types of Crypto",
+				"choices"		: 	[
+										"Coins are built on their own blockchain, and Tokens are also built on an existing blockchain.",
+										"Tokens are built on their own blockchain, and Coins are also built on an existing blockchain.",
+									],
+				"correct"		: 	"Coins are built on their own blockchain, and Tokens are also built on an existing blockchain.",
+				"explanation"	: 	"Coins are built on their own blockchain and they’re intended as a form of currency.",
+				
+				"type" : "radio"
+
+			},
+			{
+				"question"		: 	"Q3: Is it true a token differs from a coin in the way it’s constructed within the blockchain of an existing coin like Bitcoin or Ethereum?",
+				"choices"		: 	[
+										"True",
+										"False",
+									],
+				"correct"		: 	"True",
+				"explanation"	: 	"Utility tokens are designated for specific users",
+				
+				"type" : "radio"
+
+			},
+            {
+				"question"		: 	"Q4: Is it true the most common types of Cryptocurrency include Bitcoin, Ethereum, Cardano, Binance Coin, Dogecoin, and USD Coin?",
+				"choices"		: 	[
+										"True",
+										"False",
+									],
+				"correct"		: 	"True",
+				"explanation"	: 	"Few common types of Cryptocurrencies are Bitcoin, Ethereum, Cardano, Binace Coin, Tether, XRP, Dogecoin, Polkadot, and USD",
+				
+				"type" : "radio"
+
+				
+			},
+            {
+				"question"		: 	"Q5: How to avoid Cryptocurrency Scams?",
+				"choices"		: 	[   
+                                         "All the above",
+										"Research your Crypto",
+										"Use reputable platforms and exchanges",
+                                        "Review the URLs carefully",
+										"Beware celebrity endorsements",
+                                        "Don't give your passwords or cryptocurrency keys to anyone",
+										
+									],
+				"correct"		: 	"All the above",
+				"explanation"	: 	"All the above are good examples of avoiding scams in Cryptocurrency",
+				
+				"type" : "radio"
+
+				
+			},
+            {
+				"question"		: 	"Q6: What is an example of a claim that a scammer might use",
+				"choices"		: 	[
+                                         "All the above",
+                                        "Guarantee that you’ll make money",
+										"Promise big payouts with guaranteed returns",
+                                        "Promise free money",
+										"Big claims without details",
+										
+									],
+				"correct"		: "All the above",
+				"explanation"	: 	"Look for claims like above to spot a scam",
+				
+				"type" : "radio"
+
+				
+			},
+            {
+				"question"		: 	"Q7: Is it true an example of an Investment and business opportunity scam promise that you can earn lots of money in a short time and achieve financial freedom?",
+				"choices"		: 	[
+										"True",
+										"False",
+									],
+				"correct"		: 	"True",
+				"explanation"	: 	"Investment and business opportunity scam will involve with huge money in short time",
+				
+				"type" : "radio"
+
+				
+			},
+            {
+				"question"		: 	"Q8: What is an example of an action to take if you’ve been scammed in cryptocurrency?",
+				"choices"		: 	[
+                                        "All the above",
+                                        "Call your bank or cryptocurrency exchange",
+										"Protect your identity",
+                                        "Contact a cyber investigator",
+										"Report it to the FTC",
+										
+									],
+				"correct"		: "All the above",
+				"explanation"	: 	"All the above are some steps to take if you have been scammed in cryptocurrency",
+				
+				"type" : "radio"
+
+				
+			}
+	
+		];
+		var radios;
+		var currentQuestion = 0;
+		var score = 0;
+		var askingQuestion = true;
+		var answerToHide = 0;
+		
+		function loadQuestion(){
+
+			//set temporary variable for creating radio buttons
+			var radioButton;
+			
+			//clear out radio buttons from previous question
+			document.getElementById('content').innerHTML = "";
+			
+			//loop through choices, and create radio buttons
+			for(var i=0; i < quiz[currentQuestion]["choices"].length; i++){
+				
+				radioButton  = document.createElement('input');
+				radioButton.type = quiz[currentQuestion]["type"];
+				radioButton.name = 'quiz';
+				radioButton.id = 'choice'+ (i+1);
+				radioButton.value = quiz[currentQuestion]["choices"][i];
+				
+				//create label tag, which hold the actual text of the choices
+				var label = document.createElement('label');
+				label.setAttribute('for','choice'+ (i+1));
+				label.innerHTML = quiz[currentQuestion]["choices"][i];
+				
+				//create a <br> tag to separate options
+				var br = document.createElement('br');
+				
+				//attach them to content. Attach br tag, then label, then radio button
+				//document.getElementById('content').insert
+				//document.getElementById('content').insertBefore(br, 'content');
+				var list = document.getElementById("content");
+				
+				document.getElementById('content').insertBefore(br, list.childNodes[0]);
+				document.getElementById('content').insertBefore(label, br);
+				document.getElementById('content').insertBefore(radioButton, label);
+			}
+			
+			//load the question
+			document.getElementById('question').innerHTML = quiz[currentQuestion]["question"];
+			
+			//setup score for first time
+			if(currentQuestion == 0){
+				document.getElementById('score').innerHTML = '<p>score: 0 right answers out of ' + quiz.length +' possible</p>';
+			}
+
+		}
+		
+		function checkAnswer(){
+			
+			//are we asking a question, or proceeding to next question?
+			if(askingQuestion){
+				
+				//change button text to next question, so next time they click it, it goes to next question
+				document.getElementById('check').innerHTML = 'Next Question';
+				askingQuestion = false;
+				
+				//determine which radio button they clicked
+				radios = document.getElementsByName('quiz');
+				var userpick = [];
+				var correctIndex;
+				var multIndex = [];
+				var correctAmount = quiz[currentQuestion]["correct"].length
+				for(var i=0; i < radios.length; i++){
+					if(radios[i].checked){ //if this radio button is checked
+
+						var pick = radios[i].value;
+						userpick.push(pick);
+						//window.alert("pick "+userpick);
+						//window.alert(radios[i].value);
+					}
+					//get index of correct answer
+					if(radios[i].value == quiz[currentQuestion]["correct"]){
+						correctIndex = i;
+					}
+				}
+				if (quiz[currentQuestion]["type"] == "checkbox"){
+					//window.alert(quiz[currentQuestion]["type"]);
+					if (userpick.length==correctAmount){
+					for (var ii=0; ii<userpick.length;ii++){
+						if (quiz[currentQuestion]["correct"].includes(userpick[ii])){
+
+							//window.alert("includes "+quiz[currentQuestion]["correct"][ii].includes(userpick[ii]));
+							//if (ii != 0){
+								multIndex.push(ii);
+								//}
+							//window.alert("mult " +multIndex);
+						}
+					}
+					//window.alert("mult "+multIndex);
+				}
+				}
+				//window.alert("len "+correctAmount);
+				//window.alert("len2 "+multIndex.length);
+				//window.alert(multIndex);
+				if (multIndex.length == correctAmount){
+					correctIndex = 15;
+					//window.alert("15");
+				}
+				
+				//set the color if they got it right, or wrong
+				if(userpick == quiz[currentQuestion]["correct"]&&quiz[currentQuestion]["type"] != "checkbox"){
+					score++;
+					document.getElementsByTagName('label')[correctIndex].style.color = "green";
+					document.getElementsByTagName('label')[correctIndex].style.fontWeight = "bold";
+					document.getElementById('explanation').innerHTML = "<h3>Correct!</h3>";
+				} 
+				else if(correctIndex==15){
+					//window.alert("15corr");
+					score++;
+					for(var i2=0;i2<quiz[currentQuestion]["choices"].length;i2++){
+						if(userpick.includes(quiz[currentQuestion]["choices"][i2])){
+							if(quiz[currentQuestion]["choices"].length != quiz[currentQuestion]["correct"].length){
+							var i3 = quiz[currentQuestion]["choices"].length - i2 - 1;
+							document.getElementsByTagName('label')[i3].style.color = "green";
+							document.getElementsByTagName('label')[i3].style.fontWeight = "bold";
+							//window.alert("2 "+i2);
+							//window.alert("3 "+i3);
+							//window.alert(userpick);
+							//window.alert(quiz[currentQuestion]["choices"][i2]);
+							}
+							else{
+								document.getElementsByTagName('label')[i2].style.color = "green";
+								document.getElementsByTagName('label')[i2].style.fontWeight = "bold";
+							}
+						}
+					}
+					document.getElementById('explanation').innerHTML = "<h3>Correct!</h3>";
+				}
+				else if(quiz[currentQuestion]["type"] != "checkbox") {
+					document.getElementsByTagName('label')[correctIndex].style.color = "red";
+					document.getElementsByTagName('label')[correctIndex].style.fontWeight = "bold";
+					document.getElementById('explanation').innerHTML = "<h3>Incorrect</h3>";
+				}
+				else {
+					userpick1 = quiz[currentQuestion]["correct"];
+					for(var i2=0;i2<quiz[currentQuestion]["choices"].length;i2++){
+						if(userpick1.includes(quiz[currentQuestion]["choices"][i2])){
+							if(quiz[currentQuestion]["choices"].length != quiz[currentQuestion]["correct"].length){
+							var i3 = quiz[currentQuestion]["choices"].length - i2 - 1;
+							document.getElementsByTagName('label')[i3].style.color = "red";
+							document.getElementsByTagName('label')[i3].style.fontWeight = "bold";
+							//window.alert("2 "+i2);
+							//window.alert("3 "+i3);
+							//window.alert(userpick);
+							//window.alert(quiz[currentQuestion]["choices"][i2]);
+							}
+							else{
+								document.getElementsByTagName('label')[i2].style.color = "red";
+								document.getElementsByTagName('label')[i2].style.fontWeight = "bold";
+							}
+						}
+					}
+					document.getElementById('explanation').innerHTML = "<h3>Incorrect</h3>";
+				}
+				
+				document.getElementById('explanation').innerHTML += '<p>' + quiz[currentQuestion]["explanation"] + '</p>';
+				document.getElementById('score').innerHTML = '<p>score: '+ score +' right answers out of ' + quiz.length +' possible</p>';
+				
+				
+			} else { //reset form and move to next question
+
+				//setting up so user can ask a question
+				askingQuestion = true;
+				
+				//change button text back to 'submit answer'
+				document.getElementById('check').innerHTML = 'Submit Answer';
+				
+				document.getElementById('explanation').innerHTML = "";
+				
+				//if we're not on last question, increase question number
+				if(currentQuestion < quiz.length - 1){
+					currentQuestion++;
+					loadQuestion();
+				} else {
+					showFinalResults();
+				}
+
+			}
+		}
+		
+		function showFinalResults(){
+			
+			document.getElementById('content').innerHTML = '<h2>You Completed The Quiz</h2>';
+			document.getElementById('content').innerHTML += '<p>Below are your results:</p>';
+            if((score/quiz.length)<0.50){	
+                document.getElementById('content').innerHTML += '<h2>' + score + ' out of ' + quiz.length + ' questions, ' + Math.round(score/quiz.length * 100) + '%</h2>' + 'Please revisit the lessons to improve the score!';
+            }
+            else{
+                document.getElementById('content').innerHTML += '<h2>' + score + ' out of ' + quiz.length + ' questions, ' + Math.round(score/quiz.length * 100) + '%</h2>';
+            }
+			
+			
+			//delete the button
+			var button = document.getElementById('check');
+			button.parentNode.removeChild(button); //js requires you to delete elements from the parent
+			
+			//remove question
+			document.getElementById('question').innerHTML = "";
+			
+		}
+		
+	
+		window.onload = loadQuestion;
+	
+	</script>
+	
+</head>
+<body>
+	<div id="frame">
+		<h1>Types of Crypto and Avoiding Scams Quiz</h1>
+		<div id="score"><p>score: 0 right answers out of 0 possible</p></div>
+		<h2 id="question">Question here</h2>
+		<div id="content">
+
+		</div>
+		<button id="check" onclick="checkAnswer()">Submit Answer</button>
+		<div id="response">
+			<div id="explanation"></div>
+		</div>
+	</div>
+</body>
+</html>
